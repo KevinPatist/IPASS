@@ -22,8 +22,7 @@ void buttonCheck(std::array<hwlib::target::pin_out *, N> &columnList,
     coords[0] = 0;
     coords[1] = 0;   
     bool good = false;              
-    for(unsigned int i=0; i < N; i++) {
-        coords[0]++;
+    for(unsigned int i=0; i < N; i++) { 
         columnList[i]->write(1);
         columnList[i]->flush();
         hwlib::wait_ms(10);
@@ -31,10 +30,11 @@ void buttonCheck(std::array<hwlib::target::pin_out *, N> &columnList,
         columnList[i]->write(0);
         columnList[i]->flush();
         if(coords[1] > 0) {
+            coords[0] = i+1;
             good = true;
             break;
         };
-    };   
+    };  
     if(!good) {
         coords[0] = 0;
     } 

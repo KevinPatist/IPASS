@@ -12,7 +12,7 @@ int main() {
                                                     {false,false,false,false,false,false,false,false}, 
                                                     {false,false,false,false,false,false,false,false}, 
                                                     {false,false,false,false,false,false,false,false}, 
-                                                    {false,false,false,false,false,false,false,false}, }};
+                                                    {false,false,false,false,false,false,false,false} }};
 
     hwlib::wait_ms(100);
     std::array<int, 2> coords = {0,0};

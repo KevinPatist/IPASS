@@ -9,23 +9,16 @@ class minesweeper {
 private:
     std::array<std::array<int, 8>, 8> field = {
         {   
-            {-1, 3, -1, 1, 0, 1, 1, 1},
-            {3, -1, 3, 1, 0, 1, -1, 1},
-            {2, -1, 2, 2, 2, 2, 1, 1},
-            {2, 2, 2, -1, -1, 1, 0, 0},
-            {-1, 1, 1, 2, 2, 1, 1, 1},
-            {1, 1, 0, 0, 0, 0, 1, -1},
-            {0, 0, 0, 1, 1, 1, 1, 1},
-            {0, 0, 0, 1, -1, 1, 0, 0}
+            {-2, 3, 2, 2, -2, 1, -1, -1},
+            {3, -2, -2, 2, 1, 1, -1, -1},
+            {-2, 3, 3, 2, 1, -1, -1, -1},
+            {1, 1, 2, -2, 2, -1, 1, 1},
+            {-1, -1, 2, -2, 2, -1, 1, -2},
+            {1, 1, 2, 1, 1, -1, 1, 1},
+            {1, -2, 1, -1, 1, 1, 1, -1},
+            {1, 1, 1, -1, 1, -2, 1, -1}
 
-            // {0, 1, 1, 1, 0, 0, 0, 0},
-            // {0, 2, -1, 2, 0, 1, 2, 2},
-            // {1, 3, -1, 2, 0, 1, -1, -1},
-            // {-1, 3, 1, 1, 0, 1, 2, 2},
-            // {-1, 2, 0, 1, 1, 1, 0, 0},
-            // {1, 1, 0, 1, -1, 2, 1, 0},
-            // {0, 0, 0, 1, 3, -1, 3, 1},
-            // {0, 0, 0, 0, 2, -1, 3, -1}
+            
         }
     };
 
@@ -43,17 +36,28 @@ private:
 
     std::array<hwlib::target::pin_in *, 8> &rowList;
     std::array<hwlib::target::pin_out *, 8> &columnList;
+    due::pin_in flagButton;
+    bool lastFlagButtonState = false;
     bool flagMode = false;
+    bool bombHit = false;
+    bool complete = false;
 
 public:
-    minesweeper(ledGrid &grid, std::array<hwlib::target::pin_in *, 8> &rowList, std::array<hwlib::target::pin_out *, 8> &columnList):
+    minesweeper(ledGrid &grid, std::array<hwlib::target::pin_in *, 8> &rowList, std::array<hwlib::target::pin_out *, 8> &columnList, due::pins flagpin):
         gameGrid( grid ),
         rowList( rowList ),
-        columnList( columnList )
+        columnList( columnList ),
+        flagButton( due::pin_in(flagpin) )
     {}
 
     void gameInit();
     
+    void flagToggle();
+
+    void changeLedState(int Xcoord, int Ycoord);
+
+    void updateField();
+
     void gameLoop();
 };
 
