@@ -1,9 +1,22 @@
-#include "minesweeper.hpp"
+#include "ledAndButtons.hpp"
 
 int main() {
 
     auto grid = ledGrid(8, 8, hwlib::target::pins::d5);
+    grid.initialise();
 
+    std::array<std::array<bool, 8>, 8> ledState = {{{false,false,false,false,false,false,false,false}, 
+                                                    {false,false,false,false,false,false,false,false}, 
+                                                    {false,false,false,false,false,false,false,false}, 
+                                                    {false,false,false,false,false,false,false,false}, 
+                                                    {false,false,false,false,false,false,false,false}, 
+                                                    {false,false,false,false,false,false,false,false}, 
+                                                    {false,false,false,false,false,false,false,false}, 
+                                                    {false,false,false,false,false,false,false,false} }};
+
+    hwlib::wait_ms(100);
+    std::array<int, 2> coords = {0,0};
+    std::array<int, 2> lastCoords = {0,0};
     std::array<hwlib::target::pin_in *, 8> rowList;
     auto row1 = hwlib::target::pin_in(hwlib::target::pins::d6);
     auto row2 = hwlib::target::pin_in(hwlib::target::pins::d7);
@@ -38,15 +51,16 @@ int main() {
     columnList[4] = &c5;
     columnList[5] = &c6; 
     columnList[6] = &c7; 
-    columnList[7] = &c8;
+    columnList[7] = &c8; 
+
+    for(auto pin : columnList) {
+        pin->write(0);
+        pin->flush();
+    }
 
     hwlib::wait_ms(500);
     
-    minesweeper game = minesweeper(grid, rowList, columnList, due::pins::d4, due::pins::d3);
-    
-    game.gameInit();
-    game.gameLoop();
-
-    hwlib::cout << "na gameloop" << hwlib::endl;
-
+    while(1) {
+        ledButtonRefresh(columnList, rowList, ledState, coords, lastCoords, grid);
+    }
 }

@@ -37,17 +37,19 @@ private:
     std::array<hwlib::target::pin_in *, 8> &rowList;
     std::array<hwlib::target::pin_out *, 8> &columnList;
     due::pin_in flagButton;
+    due::pin_out flagLed;
     bool lastFlagButtonState = false;
     bool flagMode = false;
     bool bombHit = false;
     bool complete = false;
 
 public:
-    minesweeper(ledGrid &grid, std::array<hwlib::target::pin_in *, 8> &rowList, std::array<hwlib::target::pin_out *, 8> &columnList, due::pins flagpin):
+    minesweeper(ledGrid &grid, std::array<hwlib::target::pin_in *, 8> &rowList, std::array<hwlib::target::pin_out *, 8> &columnList, due::pins flagpin1, due::pins flagpin2):
         gameGrid( grid ),
         rowList( rowList ),
         columnList( columnList ),
-        flagButton( due::pin_in(flagpin) )
+        flagButton( due::pin_in(flagpin1) ),
+        flagLed( due::pin_out(flagpin2) )
     {}
 
     void gameInit();
@@ -57,6 +59,12 @@ public:
     void changeLedState(int Xcoord, int Ycoord);
 
     void updateField();
+    
+    void completeCheck();
+    
+    void completeEnd();
+
+    void gameOver();
 
     void gameLoop();
 };
