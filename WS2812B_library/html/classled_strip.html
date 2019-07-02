@@ -77,21 +77,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aafbeaa13dc57b08724df66a973dc2b97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#aafbeaa13dc57b08724df66a973dc2b97">ledStrip</a> (int amount, due::pins pin)</td></tr>
 <tr class="memdesc:aafbeaa13dc57b08724df66a973dc2b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">contstruct a <a class="el" href="classled_strip.html" title="A class to control a maximum of 100 RGB LEDs on a single strip. ">ledStrip</a> object with a given amount of LEDs  <a href="#aafbeaa13dc57b08724df66a973dc2b97">More...</a><br /></td></tr>
 <tr class="separator:aafbeaa13dc57b08724df66a973dc2b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f912e1b529208398ac607baea1ba74f"><td class="memItemLeft" align="right" valign="top"><a id="a9f912e1b529208398ac607baea1ba74f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#a9f912e1b529208398ac607baea1ba74f">initialise</a> ()</td></tr>
-<tr class="memdesc:a9f912e1b529208398ac607baea1ba74f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit. <br /></td></tr>
+<tr class="memitem:a9f912e1b529208398ac607baea1ba74f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#a9f912e1b529208398ac607baea1ba74f">initialise</a> ()</td></tr>
 <tr class="separator:a9f912e1b529208398ac607baea1ba74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ad1b8febe0ac24d7f5daaf204ebe890"><td class="memItemLeft" align="right" valign="top"><a id="a8ad1b8febe0ac24d7f5daaf204ebe890"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#a8ad1b8febe0ac24d7f5daaf204ebe890">writeOne</a> ()</td></tr>
-<tr class="memdesc:a8ad1b8febe0ac24d7f5daaf204ebe890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writing a "one" bit to the datapin by setting the power high and low with the right timing. <br /></td></tr>
-<tr class="separator:a8ad1b8febe0ac24d7f5daaf204ebe890"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac97d1b998c6965330939d44e138fb38a"><td class="memItemLeft" align="right" valign="top"><a id="ac97d1b998c6965330939d44e138fb38a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#ac97d1b998c6965330939d44e138fb38a">writeZero</a> ()</td></tr>
-<tr class="memdesc:ac97d1b998c6965330939d44e138fb38a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writing a "zero" bit to the datapin by setting the power high and low with the right timing. <br /></td></tr>
-<tr class="separator:ac97d1b998c6965330939d44e138fb38a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab17cf008b897e0c33f4d574f54e26d42"><td class="memItemLeft" align="right" valign="top"><a id="ab17cf008b897e0c33f4d574f54e26d42"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#ab17cf008b897e0c33f4d574f54e26d42">write</a> ()</td></tr>
-<tr class="memdesc:ab17cf008b897e0c33f4d574f54e26d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that uses the writeZero and writeOne functions to write the strips color data to the datapin. <br /></td></tr>
+<tr class="memitem:ab17cf008b897e0c33f4d574f54e26d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#ab17cf008b897e0c33f4d574f54e26d42">write</a> ()</td></tr>
 <tr class="separator:ab17cf008b897e0c33f4d574f54e26d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae181397c59ec671e4a0bcf39151ef381"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_strip.html#ae181397c59ec671e4a0bcf39151ef381">changeLedRGB</a> (int ledNum, int red, int green, int blue)</td></tr>
 <tr class="memdesc:ae181397c59ec671e4a0bcf39151ef381"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function to change the color of an individual LED.  <a href="#ae181397c59ec671e4a0bcf39151ef381">More...</a><br /></td></tr>
@@ -142,7 +130,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>contstruct a <a class="el" href="classled_strip.html" title="A class to control a maximum of 100 RGB LEDs on a single strip. ">ledStrip</a> object with a given amount of LEDs </p>
-<p>The amount of LEDs is limited to 100 </p>
+<p>The amount of LEDs is limited to 100<br />
+Example: auto strippie = <a class="el" href="classled_strip.html" title="A class to control a maximum of 100 RGB LEDs on a single strip. ">ledStrip(20, due::pins::d5)</a>;<br />
+This would create a <a class="el" href="classled_strip.html" title="A class to control a maximum of 100 RGB LEDs on a single strip. ">ledStrip</a> object called strippie that is 20 LEDs long and is controlled via digital pin 5 </p>
 
 </div>
 </div>
@@ -186,7 +176,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>A function to change the color of an individual LED. </p>
-<p>This function uses three integers for the red, green and blue values and an integer for its location </p>
+<p>This function uses three integers for the red, green and blue values and an integer for its location<br />
+ Example: ledStrip.changeLedRGB(5, 255, 255, 255);<br />
+This would set the fifth LED to white </p>
 
 </div>
 </div>
@@ -217,7 +209,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>A function to set an individual LEDs color data using hwlib::color. </p>
-<p>This function works using hwlib::color instead of three integers for the color data </p>
+<p>This function works using hwlib::color instead of three integers for the color data<br />
+Example: ledStrip.changeLedRGB(5, color1);<br />
+This would set the fifth LEDs color to hwlib::color color1 </p>
 
 </div>
 </div>
@@ -237,7 +231,48 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>This function is meant to test a short ledstrip. </p>
-<p>A function to make a little rainbow-ish thing show up on a ledstrip with 8 LEDs </p>
+<p>A function to make a little rainbow-ibriefon a ledstrip with 8 LEDs<br />
+Example: <a class="el" href="classled_strip.html#a40399d98a44fa4cb0f83fa614f8b01fd" title="This function is meant to test a short ledstrip. ">ledStrip.colorTest8Leds()</a>; This would show a rainbow effect on an 8 LED ledstrip.<br />
+the right color order would be: Off/Black, White, Yellow, Orange, Red, Green, Blue, White </p>
+
+</div>
+</div>
+<a id="a9f912e1b529208398ac607baea1ba74f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f912e1b529208398ac607baea1ba74f">&#9670;&nbsp;</a></span>initialise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledStrip::initialise </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit.<br />
+Example: <a class="el" href="classled_strip.html#a9f912e1b529208398ac607baea1ba74f">ledStrip.initialise()</a>; </p>
+
+</div>
+</div>
+<a id="ab17cf008b897e0c33f4d574f54e26d42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab17cf008b897e0c33f4d574f54e26d42">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledStrip::write </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A function that uses the writeZero and writeOne functions to write the strips color data to the datapin<br />
+Example: <a class="el" href="classled_strip.html#ab17cf008b897e0c33f4d574f54e26d42">ledStrip.write()</a><br />
+This would write the current LED colors to the datapin. </p>
 
 </div>
 </div>
@@ -247,7 +282,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 2 2019 02:48:42 for WS2812B RGB LED library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 2 2019 06:24:17 for WS2812B RGB LED library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

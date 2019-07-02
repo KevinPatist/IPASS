@@ -247,7 +247,7 @@ void minesweeper::gameOver() {
     gameGrid.changeLedRGB(5, 5, 255, 0, 0);
     gameGrid.changeLedRGB(6, 5, 255, 0, 0);
     gameGrid.changeLedRGB(7, 5, 0, 0, 0);
-    gameGrid.changeLedRGB(7, 5, 0, 0, 0);
+    gameGrid.changeLedRGB(8, 5, 0, 0, 0);
 
     gameGrid.changeLedRGB(1, 6, 0, 0, 0);
     gameGrid.changeLedRGB(2, 6, 255, 0, 0);

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['changeledstate',['changeLedState',['../classminesweeper.html#a24fc226121848d948a94004e0db9acd1',1,'minesweeper']]],
-  ['completecheck',['completeCheck',['../classminesweeper.html#aa16ba419a12edc9a03ccbe9d0b11548a',1,'minesweeper']]],
-  ['completeend',['completeEnd',['../classminesweeper.html#a3952ce5f24684b154a7535e43bad4a00',1,'minesweeper']]]
+  ['gameinit',['gameInit',['../classminesweeper.html#ad8a88d6cf203d70cf9a082a75963e2ff',1,'minesweeper']]],
+  ['gameloop',['gameLoop',['../classminesweeper.html#a766deb29b48ca91623afc7aba1749494',1,'minesweeper']]]
 ];

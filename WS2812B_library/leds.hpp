@@ -41,7 +41,9 @@ public:
     /// \brief
     /// A function to change the data in the array
     /// \details
-    /// This function is meant to be used by ledStrip and ledGrid to change the color of their LEDs
+    /// This function is meant to be used by ledStrip and ledGrid to change the color of their LEDs\n
+    /// Example: singleLed.changeColor(255,255,255);\n
+    /// This would set the color of the LED to white.
     void changeColor(int green, int red, int blue);
 };
 
@@ -56,12 +58,20 @@ private:
     std::array<singleLed, 100> ledSet;
     int ledAmount = 0;
     due::pin_out dataPin;
+    
+    /// Writing a "one" bit to the datapin by setting the power high and low with the right timing
+    void writeOne();
+
+    /// Writing a "zero" bit to the datapin by setting the power high and low with the right timing
+    void writeZero();
 
 public:
     /// \brief
     /// contstruct a ledStrip object with a given amount of LEDs
     /// \details
-    /// The amount of LEDs is limited to 100
+    /// The amount of LEDs is limited to 100\n
+    /// Example: auto strippie = ledStrip(20, due::pins::d5);\n
+    /// This would create a ledStrip object called strippie that is 20 LEDs long and is controlled via digital pin 5
     ledStrip(int amount, due::pins pin):
         ledAmount( amount ),
         dataPin( due::pin_out(pin) )
@@ -71,34 +81,39 @@ public:
         }
     }
 
-    /// Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit. 
+    /// Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit.\n
+    /// Example: ledStrip.initialise();
     void initialise();
 
-    /// Writing a "one" bit to the datapin by setting the power high and low with the right timing
-    void writeOne();
 
-    /// Writing a "zero" bit to the datapin by setting the power high and low with the right timing
-    void writeZero();
-
-    /// A function that uses the writeZero and writeOne functions to write the strips color data to the datapin
+    /// A function that uses the writeZero and writeOne functions to write the strips color data to the datapin\n
+    /// Example: ledStrip.write()\n
+    /// This would write the current LED colors to the datapin.
     void write();
 
     /// \brief
     /// A function to change the color of an individual LED
     /// \details
-    /// This function uses three integers for the red, green and blue values and an integer for its location 
+    /// This function uses three integers for the red, green and blue values and an integer for its location\n 
+    /// Example: ledStrip.changeLedRGB(5, 255, 255, 255);\n
+    /// This would set the fifth LED to white
     void changeLedRGB(int ledNum, int red, int green, int blue);
 
     /// \brief
     /// A function to set an individual LEDs color data using hwlib::color 
-    /// \brief
-    /// This function works using hwlib::color instead of three integers for the color data
+    /// \details
+    /// This function works using hwlib::color instead of three integers for the color data\n
+    /// Example: ledStrip.changeLedRGB(5, color1);\n
+    /// This would set the fifth LEDs color to hwlib::color color1
     void changeLedRGB(int ledNum, hwlib::color color);
     
     /// \brief 
     /// This function is meant to test a short ledstrip 
     /// \details
-    /// A function to make a little rainbow-ish thing show up on a ledstrip with 8 LEDs
+    /// A function to make a little rainbow-ibriefon a ledstrip with 8 LEDs\n
+    /// Example: ledStrip.colorTest8Leds();\nbrief
+    /// This would show a rainbow effect on an 8 LED ledstrip.\n
+    /// the right color order would be: Off/Black, White, Yellow, Orange, Red, Green, Blue, White
     void colorTest8Leds();
 };
 
@@ -115,13 +130,20 @@ private:
     int ledAmountX = 0;
     int ledAmountY = 0;
     due::pin_out dataPin;
+    /// Writing a "one" bit to the datapin by setting the power high and low with the right timing
+    void writeOne();
+
+    /// Writing a "zero" bit to the datapin by setting the power high and low with the right timing
+    void writeZero();
 
 public:
     /// \brief
     /// construct a ledGrid object with given width and height
     /// \details
     /// amountX is used to specify the width in number of LEDs\n
-    /// amountY is used in the same way but for the height of the grid
+    /// amountY is used in the same way but for the height of the grid\n
+    /// Example: auto grid = ledGrid(5, 5, due::pins::d5);\n
+    /// This would create a ledGrid object called grid which exists of a 5 by 5 grid and is controlled via digital pin 5.
     ledGrid(int amountX, int amountY, due::pins pin):
         ledAmountX( amountX ),
         ledAmountY( amountY ),
@@ -135,28 +157,31 @@ public:
     }
 
 
-    /// Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit. 
+    /// Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit.\n 
+    /// Example: ledGrid.initialise();
     void initialise();
 
-    /// Writing a "one" bit to the datapin by setting the power high and low with the right timing
-    void writeOne();
-
-    /// Writing a "zero" bit to the datapin by setting the power high and low with the right timing
-    void writeZero();
-
-    /// A function that uses the writeZero and writeOne functions to write the strips color data to the datapin
+    /// A function that uses the writeZero and writeOne functions to write the strips color data to the datapin\n
+    /// Example: ledGrid.write();\n
+    /// This would write the current LED colors to the datapin.
     void write();
 
     /// \brief
     /// A funtion to set an individual LEDs color
     /// \details
-    /// This function sets an LEDs color using two integers for the x and y coordinates and three integers for the red, green and blue values     
+    /// This function sets an LEDs color using two integers for the x and y coordinates and three integers for the red, green and blue values\n   
+    /// The coordinates start at (1,1) instead of (0,0)\n
+    /// Example: ledGrid.changeLedRGB(3, 5, 255, 255, 255);\n
+    /// This would set the LED on coordinates (3,5) to white.
     void changeLedRGB(int ledNumX, int ledNumY, int red, int green, int blue);
 
     /// \brief
     /// A function to set an individual LEDs color using hwlib::color and hwlib::xy
     /// \details
-    /// This function sets an LEDs color using hwlib::xy for its location and hwlib::color for the color data
+    /// This function sets an LEDs color using hwlib::xy for its location and hwlib::color for the color data\n
+    /// The coordinates start at (1,1) instead of (0,0)\n
+    /// Example: ledGrid.changeLedRGB(coordinates, color1);\n
+    /// This would set the LED located at the hwlib::xy coordinates to hwlib::color color1.
     void changeLedRGB(hwlib::xy, hwlib::color color);
     
 };

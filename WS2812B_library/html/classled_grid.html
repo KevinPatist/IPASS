@@ -77,21 +77,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9c07c8abda9da700c8891ed0710f56b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#a9c07c8abda9da700c8891ed0710f56b9">ledGrid</a> (int amountX, int amountY, due::pins pin)</td></tr>
 <tr class="memdesc:a9c07c8abda9da700c8891ed0710f56b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">construct a <a class="el" href="classled_grid.html" title="A class to control a grid of RGB LEDs. ">ledGrid</a> object with given width and height  <a href="#a9c07c8abda9da700c8891ed0710f56b9">More...</a><br /></td></tr>
 <tr class="separator:a9c07c8abda9da700c8891ed0710f56b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3281005e37951db1ab138c5d56c0397d"><td class="memItemLeft" align="right" valign="top"><a id="a3281005e37951db1ab138c5d56c0397d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#a3281005e37951db1ab138c5d56c0397d">initialise</a> ()</td></tr>
-<tr class="memdesc:a3281005e37951db1ab138c5d56c0397d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit. <br /></td></tr>
+<tr class="memitem:a3281005e37951db1ab138c5d56c0397d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#a3281005e37951db1ab138c5d56c0397d">initialise</a> ()</td></tr>
 <tr class="separator:a3281005e37951db1ab138c5d56c0397d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a322fad39b5f4cad8caeb9872b7d47927"><td class="memItemLeft" align="right" valign="top"><a id="a322fad39b5f4cad8caeb9872b7d47927"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#a322fad39b5f4cad8caeb9872b7d47927">writeOne</a> ()</td></tr>
-<tr class="memdesc:a322fad39b5f4cad8caeb9872b7d47927"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writing a "one" bit to the datapin by setting the power high and low with the right timing. <br /></td></tr>
-<tr class="separator:a322fad39b5f4cad8caeb9872b7d47927"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64e2428d1fa3a274f9e46a622618b985"><td class="memItemLeft" align="right" valign="top"><a id="a64e2428d1fa3a274f9e46a622618b985"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#a64e2428d1fa3a274f9e46a622618b985">writeZero</a> ()</td></tr>
-<tr class="memdesc:a64e2428d1fa3a274f9e46a622618b985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writing a "zero" bit to the datapin by setting the power high and low with the right timing. <br /></td></tr>
-<tr class="separator:a64e2428d1fa3a274f9e46a622618b985"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ca24243fad01225097ce203292b42b6"><td class="memItemLeft" align="right" valign="top"><a id="a0ca24243fad01225097ce203292b42b6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#a0ca24243fad01225097ce203292b42b6">write</a> ()</td></tr>
-<tr class="memdesc:a0ca24243fad01225097ce203292b42b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function that uses the writeZero and writeOne functions to write the strips color data to the datapin. <br /></td></tr>
+<tr class="memitem:a0ca24243fad01225097ce203292b42b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#a0ca24243fad01225097ce203292b42b6">write</a> ()</td></tr>
 <tr class="separator:a0ca24243fad01225097ce203292b42b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac57e354ce3bd97c7f6f0e5dc99fc6ba5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classled_grid.html#ac57e354ce3bd97c7f6f0e5dc99fc6ba5">changeLedRGB</a> (int ledNumX, int ledNumY, int red, int green, int blue)</td></tr>
 <tr class="memdesc:ac57e354ce3bd97c7f6f0e5dc99fc6ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A funtion to set an individual LEDs color.  <a href="#ac57e354ce3bd97c7f6f0e5dc99fc6ba5">More...</a><br /></td></tr>
@@ -147,7 +135,9 @@ the maximum size of the grid is 20 LEDs wide and 20 LEDs high </p>
 
 <p>construct a <a class="el" href="classled_grid.html" title="A class to control a grid of RGB LEDs. ">ledGrid</a> object with given width and height </p>
 <p>amountX is used to specify the width in number of LEDs<br />
-amountY is used in the same way but for the height of the grid </p>
+amountY is used in the same way but for the height of the grid<br />
+Example: auto grid = <a class="el" href="classled_grid.html" title="A class to control a grid of RGB LEDs. ">ledGrid(5, 5, due::pins::d5)</a>;<br />
+This would create a <a class="el" href="classled_grid.html" title="A class to control a grid of RGB LEDs. ">ledGrid</a> object called grid which exists of a 5 by 5 grid and is controlled via digital pin 5. </p>
 
 </div>
 </div>
@@ -197,7 +187,10 @@ amountY is used in the same way but for the height of the grid </p>
 </div><div class="memdoc">
 
 <p>A funtion to set an individual LEDs color. </p>
-<p>This function sets an LEDs color using two integers for the x and y coordinates and three integers for the red, green and blue values </p>
+<p>This function sets an LEDs color using two integers for the x and y coordinates and three integers for the red, green and blue values<br />
+ The coordinates start at (1,1) instead of (0,0)<br />
+Example: ledGrid.changeLedRGB(3, 5, 255, 255, 255);<br />
+This would set the LED on coordinates (3,5) to white. </p>
 
 </div>
 </div>
@@ -228,7 +221,49 @@ amountY is used in the same way but for the height of the grid </p>
 </div><div class="memdoc">
 
 <p>A function to set an individual LEDs color using hwlib::color and hwlib::xy. </p>
-<p>This function sets an LEDs color using hwlib::xy for its location and hwlib::color for the color data </p>
+<p>This function sets an LEDs color using hwlib::xy for its location and hwlib::color for the color data<br />
+The coordinates start at (1,1) instead of (0,0)<br />
+Example: ledGrid.changeLedRGB(coordinates, color1);<br />
+This would set the LED located at the hwlib::xy coordinates to hwlib::color color1. </p>
+
+</div>
+</div>
+<a id="a3281005e37951db1ab138c5d56c0397d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3281005e37951db1ab138c5d56c0397d">&#9670;&nbsp;</a></span>initialise()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledGrid::initialise </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Setting the datapin to low and waiting a millisecond so there's no power surge that can be mistaken for a bit.<br />
+ Example: <a class="el" href="classled_grid.html#a3281005e37951db1ab138c5d56c0397d">ledGrid.initialise()</a>; </p>
+
+</div>
+</div>
+<a id="a0ca24243fad01225097ce203292b42b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ca24243fad01225097ce203292b42b6">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledGrid::write </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A function that uses the writeZero and writeOne functions to write the strips color data to the datapin<br />
+Example: <a class="el" href="classled_grid.html#a0ca24243fad01225097ce203292b42b6">ledGrid.write()</a>;<br />
+This would write the current LED colors to the datapin. </p>
 
 </div>
 </div>
@@ -238,7 +273,7 @@ amountY is used in the same way but for the height of the grid </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 2 2019 02:48:42 for WS2812B RGB LED library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 2 2019 06:24:17 for WS2812B RGB LED library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>
