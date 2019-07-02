@@ -15,7 +15,7 @@ SOURCES := leds.cpp minesweeper.cpp
 HEADERS := buttonGrid.hpp leds.hpp minesweeper.hpp
 
 # other places to look for files for this project
-SEARCH  := 
+SEARCH  := ../WS2812B_library
 
 # set RELATIVE to the next higher directory 
 # and defer to the appropriate Makefile.* there
