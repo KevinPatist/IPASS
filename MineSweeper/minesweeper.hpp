@@ -13,16 +13,51 @@
 /// This class uses my WS2812B library for controlling the LEDs
 class minesweeper {
 private:
-    std::array<std::array<int, 8>, 8> field = {
-        {
-            {-2, 3, 2, 2, -2, 1, -1, -1},
+    std::array<std::array<std::array<int, 8>, 8>, 5> field = {{
+        {{  {-2, 3, 2, 2, -2, 1, -1, -1},
             {3, -2, -2, 2, 1, 1, -1, -1},
             {-2, 3, 3, 2, 1, -1, -1, -1},
             {1, 1, 2, -2, 2, -1, 1, 1},
             {-1, -1, 2, -2, 2, -1, 1, -2},
             {1, 1, 2, 1, 1, -1, 1, 1},
             {1, -2, 1, -1, 1, 1, 1, -1},
-            {1, 1, 1, -1, 1, -2, 1, -1}
+            {1, 1, 1, -1, 1, -2, 1, -1}}},
+        
+        {{   {-1, -1, -1, -1, -1, 1, -2, 1},
+            {1, 1, -1, -1, -1, 1, 1, 1},
+            {-2, 1, -1, -1, 1, 1, 2, 1},
+            {2, 3, 1, 1, 1, -2, 2, -2},
+            {-2, 2, -2, 1, 1, 2, 3, 2},
+            {2, 3, 1, 1, -1, 1, -2, 2},
+            {-2, 2, -1, -1, -1, 1, 2, -2},
+            {-2, 2, -1, -1, -1, -1, 1, 1}}},
+        
+        {{   {-1, 1, -2, 2, 1, 1, 1, -2},
+            {1, 2, 2, 3, -2, 1, 1, 1},
+            {-2, 2, 1, -2, 2, 1, -1, -1},
+            {-2, 2, 1, 1, 1, -1, -1, -1},
+            {1, 1, -1, -1, -1, 1, 1, 1},
+            {1, 1, 1, -1, -1, 1, -2, 1},
+            {1, -2, 2, 1, -1, 2, 2, 2},
+            {1, 2, -2, 1, -1, 1, -2, 1}}},
+        
+        {{   {1, -2, 1, -1, -1, -1, 1, 1},
+            {2, 2, 1, -1, 1, 1, 2, -2},
+            {-2, 1, -1, -1, 1, -2, 2, 1},
+            {1, 1, 1, 1, 2, 1, 1, -1},
+            {1, 1, 2, -2, 1, -1, -1, -1},
+            {1, -2, 3, 2, 1, -1, 1, 1},
+            {2, 3, -2, 1, -1, -1, 2, -2},
+            {1, -2, 2, 1, -1, -1, 2, -2}}},
+        
+        {{   {1, -2, 2, 2, -2, 1, 2, -2},
+            {2, 2, 2, -2, 2, 1, 2, -2},
+            {-2, 2, 3, 2, 2, -1, 1, 1},
+            {2, -2, 2, -2, 1, -1, -1, -1},
+            {2, 2, 3, 1, 1, -1, -1, -1},
+            {1, -2, 1, -1, -1, -1, -1, -1},
+            {2, 2, 2, -1, -1, -1, -1, -1},
+            {1, -2, 1, -1, -1, -1, -1, -1}}}
         }
     };
 
@@ -46,6 +81,7 @@ private:
     bool flagMode = false;
     bool bombHit = false;
     bool complete = false;
+    int fieldNum = 0;
 
 public:
     /// Construct the main game object
@@ -60,27 +96,43 @@ public:
     /// This function is used to initialise the LEDs and make sure every pin in columnList is turned off
     void gameInit();
     
+    /// \brief
     /// A function to check for a buttonpress on a designated flagMode button
+    /// \details
     /// This function changes the state of flagMode according to the output of a button
     void flagCheck();
 
+    /// \brief
     /// This function is called to update the state of an LED on the active game field
+    /// \details
+    /// This function changes the current stat of an LED on the field\n
+    /// The location of said LED is given using Xcoord and Ycoord
     void changeLedState(int Xcoord, int Ycoord);
 
     /// This function refreshes the LEDs on the grid; 
     void updateField();
     
+    /// \brief
     /// This function checks the current state of the playing field to see if the game is completed
+    /// \details 
+    /// This function checks if the game has been completed by checking if every tile has either been revealed or flagged
     void completeCheck();
     
-    /// This function draws a trophy on the LED grid to indicate the player completing/winning the game
+    /// \brief
+    /// This function draws a trophy on the LED grid
+    /// \details
+    /// This function draws a trophy on the grid to show the player they won
     void completeEnd();
 
-    /// This function draws a big red cross on the LED grid to indicate the player losing the game
+    /// \brief
+    /// This function draws a big red cross on the LED grid
+    /// \details
+    /// This function draws a big red cross on the grid to show the player they lost
     void gameOver();
 
-    /// A function including a while-loop foor the game and showing either the game over or victory screen
-    /// 
+    /// \brief
+    /// A function including a while-loop for the game and showing either the game over or victory screen
+    /// \details
     /// The while loop calls all neccesary functions in the correct order
     /// After the while-loop it calls to the right endscreen (either gameOver() or completeEnd())
     void gameLoop();

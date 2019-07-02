@@ -1,14 +1,23 @@
 #include "minesweeper.hpp"
 
 void minesweeper::gameInit() {
-    flagLed.write(0);
-    flagLed.flush();
+    
+    gameGrid.initialise();
     for(auto pin : columnList) {
         pin->write(0);
         pin->flush();
     }
-    gameGrid.initialise();
     hwlib::wait_ms(100);
+
+    uint64_t seed = 99371;
+
+    while(!flagButton.read()) {
+        seed--;
+        flagButton.refresh();
+    }
+
+    srand(seed);
+    fieldNum = rand() % 5;
 };
 
 void minesweeper::flagCheck() {
@@ -31,12 +40,12 @@ void minesweeper::changeLedState(int Xcoord, int Ycoord) {
             }
         } else {
             if((ledState[Xcoord-1][Ycoord-1] == 9) && coords != lastCoords) {
-                if(field[Xcoord-1][Ycoord-1] == -2) {
+                if(field[fieldNum][Xcoord-1][Ycoord-1] == -2) {
                     hwlib::cout << "hier ging het fout denk ik" << hwlib::endl;
                 }
 
-                if((field[Xcoord-1][Ycoord-1] == -1) && (ledState[Xcoord-1][Ycoord-1] != -1)) {
-                    ledState[Xcoord-1][Ycoord-1] = field[Xcoord-1][Ycoord-1];
+                if((field[fieldNum][Xcoord-1][Ycoord-1] == -1) && (ledState[Xcoord-1][Ycoord-1] != -1)) {
+                    ledState[Xcoord-1][Ycoord-1] = field[fieldNum][Xcoord-1][Ycoord-1];
                     if((Xcoord >= 0 && Ycoord-1 >= 0) && (Xcoord <= 8 && Ycoord-1 <= 8)) {
                         minesweeper::changeLedState(Xcoord, Ycoord-1);
                     }
@@ -62,7 +71,7 @@ void minesweeper::changeLedState(int Xcoord, int Ycoord) {
                         minesweeper::changeLedState(Xcoord+1, Ycoord);
                     }
                 } else {
-                    ledState[Xcoord-1][Ycoord-1] = field[Xcoord-1][Ycoord-1];
+                    ledState[Xcoord-1][Ycoord-1] = field[fieldNum][Xcoord-1][Ycoord-1];
                 }
             }
         }
