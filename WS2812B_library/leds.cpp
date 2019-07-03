@@ -70,7 +70,7 @@ void ledStrip::initialise() {
     dataPin.flush();
     hwlib::wait_ms(1);
 };
-
+git 
 void ledStrip::write() {
     for(int led = 0; led < ledAmount; led++) {
         for(bool bit : ledSet[led].colorBytes) {
