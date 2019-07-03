@@ -24,6 +24,7 @@ static void __attribute__((noinline)) wait_busy( int32_t n ){
 
 //======================== singleLed class =================================
 
+// This function changed the colordata in a singleLed object
 void singleLed::changeColor(int green, int red, int blue) {
     int temp = 0;
     int position = 0;
@@ -43,6 +44,7 @@ void singleLed::changeColor(int green, int red, int blue) {
 
 //======================== ledStrip class =================================
 
+// This function writes a "one" bit to the datapin
 void ledStrip::writeOne() {
     dataPin.write(1);
     dataPin.flush();
@@ -52,6 +54,7 @@ void ledStrip::writeOne() {
     wait_busy(14);
 };
 
+// This function writes a "zero" bit to the datapin
 void ledStrip::writeZero() {
     dataPin.write(1);
     dataPin.flush();
@@ -61,6 +64,7 @@ void ledStrip::writeZero() {
     wait_busy(50);
 };
 
+// This function wipes the datapin by writing it full of zeros and waiting a while
 void ledStrip::initialise() {
     dataPin.write(0);
     dataPin.flush();
