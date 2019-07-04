@@ -1,0 +1,5 @@
+Hardware gebruikt in dit project:
+- een WS2812B ledstrip (twee keer 60 leds per meter waarvan 64 in 8x8 grid zijn gelegd)
+- een zelfgemaakte 8 bij 8 button matrix
+- arduino due
+- jerryrigged 5v 2A voeding
